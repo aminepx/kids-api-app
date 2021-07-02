@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\File;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
+
 
 class PdfController extends Controller
 {
@@ -25,19 +25,12 @@ class PdfController extends Controller
 
         $newImageName='myUrl'.'-'.time(). '.' . $req->image->extension();
         $req->image->move(public_path("pdf/images"),$newImageName);
-        
-        
-        
         $newpdfName=$req->title .'-' .time() . '.' . $req->pdfUrl->extension();
         $req->pdfUrl->move("pdf",$newpdfName);
-        
         $pdf->title=$req->title;
-        
         $pdf->pdfUrl=$newpdfName;
         $pdf->image=$newImageName;
         
-
-    
         $pdf->save();
         return redirect('/all-pdf');
       }
@@ -47,10 +40,13 @@ class PdfController extends Controller
         return view('pdf-pages/feed-pdf',['pdf'=>$pdf]);
     }
     public function destroypdf($id){
-        File::find($id)->delete();
+        $delete=File::find($id);
+        unlink('pdf/images/'.$delete->image);
+        unlink('pdf/'.$delete->pdfUrl);
+        $delete->delete();
         return redirect('/all-pdf');
     }
-    public function download(Request $req, $file){
+    public function download($file){
         
         return response()->download(public_path(('pdf/'.$file)));
     }

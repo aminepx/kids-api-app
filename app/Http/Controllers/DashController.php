@@ -21,7 +21,10 @@ class DashController extends Controller
 
 
     public function destroy($id){
-        Category::find($id)->delete();
+      $delete=Category::find($id);
+        unlink('images/'.$delete->image);
+        $delete->delete();
+
         return redirect('/cat');
     }
     public function updateForm($id)

@@ -9,7 +9,7 @@
     
     <div class="mt-5">
         <input type="text" class="form-control "  placeholder="name" name="name">
-        <input type="file" id="photo"  name="image" />
+        <input type="file" id="photo" class="form-control "   name="image" />
         <input type="text" class="form-control "  placeholder="page type" name="page_type">
         <input type="text" class="form-control "  placeholder="json url" name="jsonurl">
         <button class="btn  btn-success form-control mt-2 "> Add</button>
