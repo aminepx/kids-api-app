@@ -8,10 +8,21 @@
    <div class="form-group col-md-6 mt-5 offset-3">
     
     <div class="mt-5">
-        <input type="text" class="form-control "  placeholder="name" name="name">
-        <input type="file" id="photo" class="form-control "   name="image" />
-        <input type="text" class="form-control "  placeholder="page type" name="page_type">
-        <input type="text" class="form-control "  placeholder="json url" name="jsonurl">
+        <div class="form-floating mb-2">
+            <input type="text" class="form-control" name="name"  placeholder="Name">
+            <label for="floatingInput">Name</label>
+          </div>
+          <div class="mb-2">
+            <input type="file" class="form-control" name="image"  placeholder="Image">
+        </div>
+          <div class="form-floating mb-2">
+            <input type="text" class="form-control" name="page_type"  placeholder="page type">
+            <label for="floatingInput">page type</label>
+          </div>
+          <div class="form-floating mb-2">
+            <input type="text" class="form-control" name="jsonurl"  placeholder="json url">
+            <label for="floatingInput">jsonurl</label>
+          </div>
         <button class="btn  btn-success form-control mt-2 "> Add</button>
     </div>
    </div>

@@ -22,6 +22,7 @@ Route::get('/', function () {
 
 
 ///// categories
+
 Route::get('/cat', [DashController::class , 'feed'])->name('cat');
 Route::delete('delete/{id}',[DashController::class,'destroy'])->name('delete');
 Route::get('update/{id}', [DashController::class, 'updateForm'])->name('update');

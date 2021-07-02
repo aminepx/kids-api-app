@@ -24,14 +24,17 @@ class DashController extends Controller
       $delete=Category::find($id);
         unlink('images/'.$delete->image);
         $delete->delete();
-
         return redirect('/cat');
     }
+
+
     public function updateForm($id)
     {
       $category=  Category::find($id);
        return view('pages.updateForm',['cat'=>$category]);
     }
+
+
     public function edit(Request $req,$id){
       
         $cat=Category::find($id);
@@ -52,10 +55,14 @@ class DashController extends Controller
         $cat->update();
         return redirect('/cat');
       }
+
+
       public function add()
     {
         return view('pages.add');
     }
+
+
       public function store(Request $req){
       
         $cat=new Category();

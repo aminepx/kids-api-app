@@ -13,9 +13,7 @@
     <title>Document</title>
 </head>
 <body>
-    
     <div class="d-flex" id="wrapper">
-        
         <!-- Sidebar-->
         <div class="border-end bg-white" id="sidebar-wrapper">
             <div class="sidebar-heading border-bottom bg-light">Categories Dashboard</div>
@@ -29,13 +27,7 @@
         </div>
         <!-- Page content wrapper-->
         <div id="page-content-wrapper">
-            <!-- Top navigation-->
-            
-            <!-- Page content-->
-            
-              @yield('content')
-            
-            
+              @yield('content')  
         </div>
     </div>
     

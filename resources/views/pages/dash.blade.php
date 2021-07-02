@@ -3,7 +3,7 @@
 @section('content')
 
 
-<img src="{{asset('images/logo.jpg')}}" class="w-100" alt="">
+<h1>the dashboard</h1>
 
 
 @endsection
