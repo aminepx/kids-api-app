@@ -24,7 +24,7 @@ class PdfApiController extends Controller
         
         
         
-        $newpdfName=time() . '.' . $req->pdfUrl->extension();
+        $newpdfName=$req->title .'-'. time() . '.' . $req->pdfUrl->extension();
         $req->pdfUrl->move("pdf",$newpdfName);
         
         $pdf->title=$req->title;

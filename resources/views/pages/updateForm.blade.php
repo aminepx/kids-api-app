@@ -9,7 +9,7 @@
     <h1 class="text-center m-4 text-secondary">Update category: {{$cat->id}}</h1>
     <div class="mt-5">
         <input type="text" class="form-control " value="{{$cat->name}}" placeholder="name" name="name">
-        <input type="file"  name="image"/>
+        <input type="file" class="form-control " name="image" />  
         <input type="text" class="form-control " value="{{$cat->page_type}}" placeholder="page type" name="page_type">
         <input type="text" class="form-control " value="{{$cat->jsonurl}}" placeholder="json url" name="jsonurl">
         <button class="btn  btn-warning "> Update</button>

@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="float-end mt-2 me-2">
+<div class="float-end mt-2 me-5">
   <a href="{{route('add-pdf')}}"> <button class="btn btn-primary"> Add New PDF</button></a>
 </div>
 
@@ -21,8 +21,8 @@
   <tr >
       <th scope="row">{{$file->id}}</th>
       <td style="width: 200px">{{$file->title}}</td>
-      <td><img src="{{asset('pdf/images/'.$file->image) }}" width="100px"  alt=""></td>
-      <td>{{$file->pdfUrl}}</td>
+      <td>  <img src="{{asset('pdf/images/'.$file->image) }}" width="100px"  alt=""></td>
+      <td><a href="{{url('/download',$file->pdfUrl)}}">{{$file->pdfUrl}}</a></td>
       <td> <span class="d-flex">
         <form action="{{route('deletepdf',['id'=>$file->id])}}"  method="post">
             @csrf

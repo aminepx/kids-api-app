@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\File;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PdfController extends Controller
 {
@@ -22,12 +23,12 @@ class PdfController extends Controller
             'pdfUrl'=>'required'
         ]);
 
-        $newImageName='myUrl'.'-'.time() . '.' . $req->image->extension();
+        $newImageName='myUrl'.'-'.time(). '.' . $req->image->extension();
         $req->image->move(public_path("pdf/images"),$newImageName);
         
         
         
-        $newpdfName=time() . '.' . $req->pdfUrl->extension();
+        $newpdfName=$req->title .'-' .time() . '.' . $req->pdfUrl->extension();
         $req->pdfUrl->move("pdf",$newpdfName);
         
         $pdf->title=$req->title;
@@ -38,7 +39,7 @@ class PdfController extends Controller
 
     
         $pdf->save();
-        return back();
+        return redirect('/all-pdf');
       }
       public function getPdf(){
 
@@ -47,6 +48,10 @@ class PdfController extends Controller
     }
     public function destroypdf($id){
         File::find($id)->delete();
-        return redirect('/allpdf');
+        return redirect('/all-pdf');
+    }
+    public function download(Request $req, $file){
+        
+        return response()->download(public_path(('pdf/'.$file)));
     }
 }
