@@ -20,17 +20,19 @@ class PdfController extends Controller
         $req->validate([
             'title'=>'required',
             'image'=>'required|mimes:jpg,png,jpeg',
-            'pdfUrl'=>'required'
+            'readUrl'=>'required',
+            'ageGroup'=>'required'
         ]);
-
-        $newImageName='myUrl'.'-'.time(). '.' . $req->image->extension();
-        $req->image->move(public_path("pdf/images"),$newImageName);
-        $newpdfName=$req->title .'-' .time() . '.' . $req->pdfUrl->extension();
-        $req->pdfUrl->move("pdf",$newpdfName);
-        $pdf->title=$req->title;
-        $pdf->pdfUrl=$newpdfName;
-        $pdf->image=$newImageName;
         
+        $newImageName='myUrl'.'-'.time(). '.' . $req->image->extension();
+        $req->image->move(public_path("storage/pdf/images"),$newImageName);
+        $newpdfName=$req->title .'-' .time() . '.' . $req->readUrl->extension();
+        $req->readUrl->move("storage/pdf",$newpdfName);
+        $pdf->title=$req->title;
+        $pdf->readUrl=$newpdfName;
+        $pdf->image=$newImageName;
+        $pdf->ageGroup=$req->ageGroup;
+        $pdf->description=$req->description;
         $pdf->save();
         return redirect('/all-pdf');
       }
@@ -41,13 +43,13 @@ class PdfController extends Controller
     }
     public function destroypdf($id){
         $delete=File::find($id);
-        unlink('pdf/images/'.$delete->image);
-        unlink('pdf/'.$delete->pdfUrl);
+        unlink('storage/pdf/images/'.$delete->image);
+        unlink('storage/pdf/'.$delete->readUrl);
         $delete->delete();
         return redirect('/all-pdf');
     }
     public function download($file){
         
-        return response()->download(public_path(('pdf/'.$file)));
+        return response()->download(public_path(('storage/pdf/'.$file)));
     }
 }

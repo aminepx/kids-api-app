@@ -19,17 +19,19 @@
   <tr >
       <th scope="row">{{$cat->id}}</th>
       <td style="width: 250px">{{$cat->name}}</td>
-      <td style="width: 250px"><img src="{{asset('images/'.$cat->image) }}" width="100px" height="70px"  alt=""></td>
-      <td style="width: 250px"> <span class="d-flex">
+      <td style="width: 250px"><img src="{{asset('storage/images/'.$cat->image) }}" width="100px" height="70px"  alt=""></td>
+      <td > <span class="d-flex">
         <form action="{{route('delete',['id'=>$cat->id])}}"  method="post">
             @csrf
             @method('DELETE')
-            <button class="btn btn-danger me-1">Delete</button>
+            <button class="btn btn-danger me-1"><i class="fas fa-trash-alt"></i></button>
             </form>
-        <a href="{{route('update',['id'=>$cat->id])}}" class="profile__button u-fat-text"><button class="btn btn-warning me-1">Update</button></a></td>
-    <td>
+        <a href="{{route('update',['id'=>$cat->id])}}" class="profile__button u-fat-text"><button class="btn btn-warning me-1"><i class="far fa-edit"></i>
+        </button></a>
+      </td>
+          
 
-    </td>
+    
     
   </tr>
    

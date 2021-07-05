@@ -28,7 +28,7 @@ class CategoryController extends Controller
   ]);
 
   $newImageName='myUrl'.'-'.time() . '.' . $req->image->extension();
-  $req->image->move(public_path('images'),$newImageName);
+  $req->image->move(public_path('storage/images'),$newImageName);
   $cat->name=$req->name;
   $cat->page_type=$req->page_type;
   $cat->jsonurl=$req->jsonurl;

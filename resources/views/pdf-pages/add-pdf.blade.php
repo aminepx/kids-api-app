@@ -14,8 +14,17 @@
           </div>
         <label for="formFile" class="form-label"> Image :</label>
         <input type="file" class="form-control mt2" name="image"/>
-        <label for="formFile" class="form-label">PDF :</label>
-        <input type="file" class="form-control mt-2" name="pdfUrl">
+        <label for="formFile" class="form-label">PDF URL :</label>
+        <input type="file" class="form-control mt-2" name="readUrl">
+        <div class="form-floating mb-2 mt-2">
+          <input type="text" class="form-control" name="ageGroup" placeholder="Age">
+          <label for="floatingInput">Age</label>
+        </div>
+        <div class="form-floating mb-2">
+          <input type="text" class="form-control" name="description" placeholder="Description">
+          <label for="floatingInput">Description</label>
+        </div>
+        
         <button class="btn  btn-success form-control mt-2 "> Add</button>
     </div>
    </div>

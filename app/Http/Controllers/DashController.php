@@ -22,7 +22,7 @@ class DashController extends Controller
 
     public function destroy($id){
       $delete=Category::find($id);
-        unlink('images/'.$delete->image);
+        unlink('storage/images/'.$delete->image);
         $delete->delete();
         return redirect('/cat');
     }
@@ -46,13 +46,13 @@ class DashController extends Controller
       ]);
 
       $newImageName='myUrl'.'-'.time() . '.' . $req->image->extension();
-      $req->image->move(public_path('images'),$newImageName);
+      $req->image->move(public_path('storage/images'),$newImageName);
         $cat->name=$req->name;
         $cat->page_type=$req->page_type;
         $cat->jsonurl=$req->jsonurl;
         $cat->image=$newImageName;
     
-        $cat->update();
+        $cat->save();
         return redirect('/cat');
       }
 
@@ -75,7 +75,8 @@ class DashController extends Controller
         ]);
 
         $newImageName='myUrl'.'-'.time() . '.' . $req->image->extension();
-        $req->image->move(public_path('images'),$newImageName);
+        $req->image->move(public_path('storage/images'),$newImageName);
+
         $cat->name=$req->name;
         $cat->page_type=$req->page_type;
         $cat->jsonurl=$req->jsonurl;

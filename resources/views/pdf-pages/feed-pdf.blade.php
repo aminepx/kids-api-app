@@ -14,6 +14,8 @@
       <th style="width: 200px" scope="col">Title</th>
       <th style="width: 200px" scope="col">Image</th>
       <th style="width: 200px" scope="col">Pdf Url</th>
+      <th style="width: 200px" scope="col">Age</th>
+      <th style="width: 200px" scope="col">Description</th>
       <th></th>
     </tr>
   </thead>
@@ -21,13 +23,15 @@
   <tr >
       <th scope="row">{{$file->id}}</th>
       <td style="width: 250px">{{$file->title}}</td>
-      <td style="width: 250px">  <img src="{{asset('pdf/images/'.$file->image) }}" width="100px" height="70px"  alt=""></td>
-      <td style="width: 250px"><a href="{{url('/download',$file->pdfUrl)}}">{{$file->pdfUrl}}</a></td>
-      <td style="width: 250px"> <span class="d-flex">
+      <td style="width: 250px">  <img src="{{asset('storage/pdf/images/'.$file->image) }}" width="100px" height="70px"  alt=""></td>
+      <td style="width: 250px"><a href="{{url('/download',$file->readUrl)}}">{{$file->readUrl}}</a></td>
+      <td style="width: 250px">{{$file->ageGroup}}</td>
+      <td style="width: 250px">{{$file->description}}</td>
+      <td > <span class="d-flex">
         <form action="{{route('deletepdf',['id'=>$file->id])}}"  method="post">
             @csrf
             @method('DELETE')
-            <a href="{{route('deletepdf',$file->id)}}"></a> <button class="btn btn-danger me-1">Delete</button>
+            <a href="{{route('deletepdf',$file->id)}}"></a> <button class="btn btn-danger me-1"><i class="fas fa-trash-alt"></i></button>
             </form>
           </td>
   </tr>

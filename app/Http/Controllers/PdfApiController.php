@@ -15,17 +15,21 @@ class PdfApiController extends Controller
         $req->validate([
             'title'=>'required',
             'image'=>'required|mimes:jpg,png,jpeg',
-            'pdfUrl'=>'required'
+            'readUrl'=>'required'
         ]);
 
         $newImageName='myUrl'.'-'.time() . '.' . $req->image->extension();
-        $req->image->move(public_path("pdf/images"),$newImageName);
+        $req->image->move(public_path("storage/pdf/images"),$newImageName);
         
-        $newpdfName=$req->title .'-'. time() . '.' . $req->pdfUrl->extension();
-        $req->pdfUrl->move("pdf",$newpdfName);
+       
+
+        $newpdfName=$req->title .'-'. time() . '.' . $req->readUrl->extension();
+        $req->readUrl->move("storage/pdf",$newpdfName);
         
         $pdf->title=$req->title;
-        $pdf->pdfUrl=$newpdfName;
+        $pdf->description=$req->description;
+        $pdf->ageGroup=$req->ageGroup;
+        $pdf->readUrl=$newpdfName;
         $pdf->image=$newImageName;    
         $pdf->save();
         
@@ -39,8 +43,8 @@ class PdfApiController extends Controller
     public function destroyOnepdf($id){
             
         $delete=File::find($id);
-        unlink('pdf/images/'.$delete->image);
-        unlink('pdf/'.$delete->pdfUrl);
+        unlink('storage/pdf/images/'.$delete->image);
+        unlink('storage/pdf/'.$delete->readUrl);
         $delete->delete();
 
     }

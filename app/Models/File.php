@@ -10,7 +10,9 @@ class File extends Model
     protected $fillable=[
         'title',
         'image',
-        'pdfUrl'
+        'readUrl',
+        'ageGroup',
+        'description'
         
     ];
     use HasFactory;

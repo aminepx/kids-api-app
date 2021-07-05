@@ -12,14 +12,14 @@
             <input type="text" class="form-control" name="name" value="{{$cat->name}}"   placeholder="Name">
             <label for="floatingInput">Name</label>
           </div>
-          
-            <input type="file" class="form-control mb-2" name="image" />
-        
+          <div>
+            <input type="file" class="form-control mb-2" value="" name="image"  />
+        </div>
           <div class="form-floating mb-2">
             <input type="text" class="form-control" name="page_type" value="{{$cat->page_type}}"   placeholder="page type">
             <label for="floatingInput">page type</label>
           </div>
-          <div class="form-floating mb-2">
+          <div class="form-floating mb-2" >
             <input type="text" class="form-control" name="jsonurl"  value="{{$cat->jsonurl}}" placeholder="json url">
             <label for="floatingInput">jsonurl</label>
           </div>

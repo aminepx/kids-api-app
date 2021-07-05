@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DashController;
 use App\Http\Controllers\PdfController;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
 /*

@@ -17,7 +17,10 @@ class CreateFilesTable extends Migration
             $table->id();
             $table->string('title');
             $table->string('image');
-            $table->string('pdfUrl');
+            $table->string('readUrl');
+            $table->string('ageGroup');
+            $table->string('description')->nullable();
+
             
             $table->timestamps();
         });
