@@ -20,14 +20,14 @@ class PdfController extends Controller
         $req->validate([
             'title'=>'required',
             'image'=>'required|mimes:jpg,png,jpeg',
-            'readUrl'=>'required',
+            'readUrl'=>'required|mimes:pdf,',
             'ageGroup'=>'required'
         ]);
         
-        $newImageName='myUrl'.'-'.time(). '.' . $req->image->extension();
-        $req->image->move(public_path("storage/pdf/images"),$newImageName);
+        $newImageName=$req->image->getClientOriginalName().'.'.$req->image->extension();
+        $req->image->move("/var/www/clicklab.app/uploads/images/",$newImageName);
         $newpdfName=$req->title .'-' .time() . '.' . $req->readUrl->extension();
-        $req->readUrl->move("storage/pdf",$newpdfName);
+        $req->readUrl->move("/var/www/clicklab.app/uploads/pdf/",$newpdfName);
         $pdf->title=$req->title;
         $pdf->readUrl=$newpdfName;
         $pdf->image=$newImageName;

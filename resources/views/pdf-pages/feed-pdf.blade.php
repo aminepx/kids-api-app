@@ -23,7 +23,7 @@
   <tr >
       <th scope="row">{{$file->id}}</th>
       <td style="width: 250px">{{$file->title}}</td>
-      <td style="width: 250px">  <img src="{{asset('storage/pdf/images/'.$file->image) }}" width="100px" height="70px"  alt=""></td>
+      <td style="width: 250px">  <img src="{{$file->image }}" width="100px" height="70px"  alt=""></td>
       <td style="width: 250px"><a href="{{url('/download',$file->readUrl)}}">{{$file->readUrl}}</a></td>
       <td style="width: 250px">{{$file->ageGroup}}</td>
       <td style="width: 250px">{{$file->description}}</td>

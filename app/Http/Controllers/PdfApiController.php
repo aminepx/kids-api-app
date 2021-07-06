@@ -15,7 +15,8 @@ class PdfApiController extends Controller
         $req->validate([
             'title'=>'required',
             'image'=>'required|mimes:jpg,png,jpeg',
-            'readUrl'=>'required'
+            'readUrl'=>'required',
+            'ageGroup'=>'required'
         ]);
 
         $newImageName='myUrl'.'-'.time() . '.' . $req->image->extension();

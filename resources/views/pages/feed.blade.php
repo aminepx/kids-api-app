@@ -19,7 +19,7 @@
   <tr >
       <th scope="row">{{$cat->id}}</th>
       <td style="width: 250px">{{$cat->name}}</td>
-      <td style="width: 250px"><img src="{{asset('storage/images/'.$cat->image) }}" width="100px" height="70px"  alt=""></td>
+      <td style="width: 250px"><img src="{{$cat->image }}" width="100px" height="70px"  alt=""></td>
       <td > <span class="d-flex">
         <form action="{{route('delete',['id'=>$cat->id])}}"  method="post">
             @csrf

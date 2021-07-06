@@ -73,7 +73,8 @@ class DashController extends Controller
             'jsonurl'=>'required',
             'image'=>'required|mimes:jpg,png,jpeg'
         ]);
-
+        
+         
         $newImageName='myUrl'.'-'.time() . '.' . $req->image->extension();
         $req->image->move(public_path('storage/images'),$newImageName);
 
@@ -84,6 +85,8 @@ class DashController extends Controller
     
         $cat->save();
         return redirect('/cat');
+    
+     
       }
     
 }
