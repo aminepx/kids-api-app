@@ -21,9 +21,8 @@ class DashController extends Controller
 
 
     public function destroy($id){
-      $delete=Category::find($id);
-        unlink('storage/images/'.$delete->image);
-        $delete->delete();
+    
+      Category::find($id)->delete();
         return redirect('/cat');
     }
 
@@ -45,7 +44,7 @@ class DashController extends Controller
           'image'=>'required|mimes:jpg,png,jpeg'
       ]);
 
-      $newImageName='myUrl'.'-'.time() . '.' . $req->image->extension();
+      $newImageName='https://clicklab.app/uploads/images/'.$req->image->getClientOriginalName();
       $req->image->move(public_path('storage/images'),$newImageName);
         $cat->name=$req->name;
         $cat->page_type=$req->page_type;
@@ -75,8 +74,8 @@ class DashController extends Controller
         ]);
         
          
-        $newImageName='myUrl'.'-'.time() . '.' . $req->image->extension();
-        $req->image->move(public_path('storage/images'),$newImageName);
+        $newImageName='https://clicklab.app/uploads/images/categories/'.$req->image->getClientOriginalName();
+        $req->image->move("/var/www/clicklab.app/uploads/images/categories/",$newImageName);
 
         $cat->name=$req->name;
         $cat->page_type=$req->page_type;

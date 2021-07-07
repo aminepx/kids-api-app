@@ -19,13 +19,13 @@ class PdfApiController extends Controller
             'ageGroup'=>'required'
         ]);
 
-        $newImageName='myUrl'.'-'.time() . '.' . $req->image->extension();
-        $req->image->move(public_path("storage/pdf/images"),$newImageName);
+        $newImageName='https://clicklab.app/uploads/images/read/'.$req->image->getClientOriginalName();
+        $req->image->move("/var/www/clicklab.app/uploads/images/read/",$newImageName);
         
        
 
-        $newpdfName=$req->title .'-'. time() . '.' . $req->readUrl->extension();
-        $req->readUrl->move("storage/pdf",$newpdfName);
+        $newpdfName='https://clicklab.app/uploads/pdf/'.$req->image->getClientOriginalName();
+        $req->readUrl->move("/var/www/clicklab.app/uploads/pdf/",$newpdfName);
         
         $pdf->title=$req->title;
         $pdf->description=$req->description;
@@ -43,10 +43,7 @@ class PdfApiController extends Controller
     }
     public function destroyOnepdf($id){
             
-        $delete=File::find($id);
-        unlink('storage/pdf/images/'.$delete->image);
-        unlink('storage/pdf/'.$delete->readUrl);
-        $delete->delete();
+        File::find($id)->delete();
 
     }
 }

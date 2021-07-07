@@ -40,5 +40,5 @@ Route::get('/all-pdf', [PdfController::class , 'getPdf'])->name('allpdf');
 Route::get('add-pdf',[PdfController::class,'addPdf'])->name('add-pdf');
 Route::post('save-pdf',[PdfController::class,'storePdf'])->name('save-pdf');
 Route::delete('deletepdf/{id}',[PdfController::class,'destroypdf'])->name('deletepdf');
-Route::get('download/{file}',[PdfController::class,'download'])->name('download');
+
 

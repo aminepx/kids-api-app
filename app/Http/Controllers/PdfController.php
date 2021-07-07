@@ -24,9 +24,9 @@ class PdfController extends Controller
             'ageGroup'=>'required'
         ]);
         
-        $newImageName=$req->image->getClientOriginalName().'.'.$req->image->extension();
-        $req->image->move("/var/www/clicklab.app/uploads/images/",$newImageName);
-        $newpdfName=$req->title .'-' .time() . '.' . $req->readUrl->extension();
+        $newImageName='https://clicklab.app/uploads/images/read/'.$req->image->getClientOriginalName();
+        $req->image->move("/var/www/clicklab.app/uploads/images/read/",$newImageName);
+        $newpdfName='https://clicklab.app/uploads/pdf/'.$req->readUrl->getClientOriginalName();
         $req->readUrl->move("/var/www/clicklab.app/uploads/pdf/",$newpdfName);
         $pdf->title=$req->title;
         $pdf->readUrl=$newpdfName;
@@ -42,14 +42,8 @@ class PdfController extends Controller
         return view('pdf-pages/feed-pdf',['pdf'=>$pdf]);
     }
     public function destroypdf($id){
-        $delete=File::find($id);
-        unlink('storage/pdf/images/'.$delete->image);
-        unlink('storage/pdf/'.$delete->readUrl);
-        $delete->delete();
+        File::find($id)->delete();
         return redirect('/all-pdf');
     }
-    public function download($file){
-        
-        return response()->download(public_path(('storage/pdf/'.$file)));
-    }
+   
 }

@@ -27,8 +27,8 @@ class CategoryController extends Controller
       'image'=>'required|mimes:jpg,png,jpeg'
   ]);
 
-  $newImageName='myUrl'.'-'.time() . '.' . $req->image->extension();
-  $req->image->move(public_path('storage/images'),$newImageName);
+  $newImageName='https://clicklab.app/uploads/images/categories/'.$req->image->getClientOriginalName();
+  $req->image->move("/var/www/clicklab.app/uploads/images/categories/",$newImageName);
   $cat->name=$req->name;
   $cat->page_type=$req->page_type;
   $cat->jsonurl=$req->jsonurl;
