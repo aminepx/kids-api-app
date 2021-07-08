@@ -44,8 +44,8 @@ class DashController extends Controller
           'image'=>'required|mimes:jpg,png,jpeg'
       ]);
 
-      $newImageName='https://clicklab.app/uploads/images/'.$req->image->getClientOriginalName();
-      $req->image->move(public_path('storage/images'),$newImageName);
+      $newImageName='https://clicklab.app/public_html/uploads/images/categories/'.$req->image->getClientOriginalName();
+      $req->image->move("/var/www/clicklab.app/public_html/uploads/images/categories/",$newImageName);
         $cat->name=$req->name;
         $cat->page_type=$req->page_type;
         $cat->jsonurl=$req->jsonurl;
@@ -74,8 +74,8 @@ class DashController extends Controller
         ]);
         
          
-        $newImageName='https://clicklab.app/uploads/images/categories/'.$req->image->getClientOriginalName();
-        $req->image->move("/var/www/clicklab.app/uploads/images/categories/",$newImageName);
+        $newImageName='https://clicklab.app/public_html/uploads/images/categories/'.$req->image->getClientOriginalName();
+        $req->image->move("/var/www/clicklab.app/public_html/uploads/images/categories/",$newImageName);
 
         $cat->name=$req->name;
         $cat->page_type=$req->page_type;

@@ -27,8 +27,8 @@ class CategoryController extends Controller
       'image'=>'required|mimes:jpg,png,jpeg'
   ]);
 
-  $newImageName='https://clicklab.app/uploads/images/categories/'.$req->image->getClientOriginalName();
-  $req->image->move("/var/www/clicklab.app/uploads/images/categories/",$newImageName);
+  $newImageName='https://clicklab.app/public_html/uploads/images/categories/'.$req->image->getClientOriginalName();
+  $req->image->move("/var/www/clicklab.app/public_html/uploads/images/categories/",$newImageName);
   $cat->name=$req->name;
   $cat->page_type=$req->page_type;
   $cat->jsonurl=$req->jsonurl;
@@ -41,10 +41,13 @@ class CategoryController extends Controller
     Category::find($id)->delete();
 }
   public function update(Request $req,$id){
+
+    $newImageName='https://clicklab.app/public_html/uploads/images/categories/'.$req->image->getClientOriginalName();
+    $req->image->move("/var/www/clicklab.app/public_html/uploads/images/categories/",$newImageName);
       
     $cat=Category::find($id);
     $cat->name=$req->name;
-    $cat->image=$req->image;
+    $cat->image=$newImageName;
     $cat->page_type=$req->page_type;
     $cat->jsonurl=$req->jsonurl;
 
