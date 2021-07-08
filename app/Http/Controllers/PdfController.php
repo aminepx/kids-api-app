@@ -24,9 +24,9 @@ class PdfController extends Controller
             'ageGroup'=>'required'
         ]);
         
-        $newImageName='https://clicklab.app/public_html/uploads/images/read/'.$req->image->getClientOriginalName();
+        $newImageName='https://clicklab.app/uploads/images/read/'.$req->image->getClientOriginalName();
         $req->image->move("/var/www/clicklab.app/public_html/uploads/images/read/",$newImageName);
-        $newpdfName='https://clicklab.app/public_html/uploads/pdf/'.$req->readUrl->getClientOriginalName();
+        $newpdfName='https://clicklab.app/uploads/pdf/'.$req->readUrl->getClientOriginalName();
         $req->readUrl->move("/var/www/clicklab.app/public_html/uploads/pdf/",$newpdfName);
         $pdf->title=$req->title;
         $pdf->readUrl=$newpdfName;
