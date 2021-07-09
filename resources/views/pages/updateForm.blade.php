@@ -9,7 +9,7 @@
     <h1 class="text-center m-4 text-secondary">Update category: {{$cat->id}}</h1>
     <div class="mt-5">
         <div class="form-floating mb-2">
-            <input type="text" value="{{old('name')}}" class="form-control @error('name') is-invalid @enderror" name="name" value="{{$cat->name}}"   placeholder="Name">
+            <input type="text"  class="form-control @error('name') is-invalid @enderror" name="name" value="{{$cat->name}}"   placeholder="Name">
             @error('name')
                <div class="alert alert-danger">{{$message}}</div> 
             @enderror
@@ -22,14 +22,14 @@
          @enderror
           </div>
           <div class="form-floating mb-2">
-            <input type="text" value="{{old('page_type')}}" class="form-control @error('page_type') is-invalid @enderror" name="page_type" value="{{$cat->page_type}}"   placeholder="page type">
+            <input type="text"  class="form-control @error('page_type') is-invalid @enderror" name="page_type" value="{{$cat->page_type}}"   placeholder="page type">
             @error('page_type')
                <div class="alert alert-danger">{{$message}}</div> 
             @enderror
             <label for="floatingInput">page type</label>
           </div>
           <div class="form-floating mb-2" >
-            <input type="text" value="{{old('jsonurl')}}" class="form-control @error('jsonurl') is-invalid @enderror" name="jsonurl"  value="{{$cat->jsonurl}}" placeholder="json url">
+            <input type="text" readonly value="{{url('188.166.93.170:9000/api/allcat')}}" class="form-control @error('jsonurl') is-invalid @enderror" name="jsonurl"  value="{{$cat->jsonurl}}" placeholder="json url">
             @error('jsonurl')
                <div class="alert alert-danger">{{$message}}</div> 
             @enderror

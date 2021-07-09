@@ -65,7 +65,7 @@ class DashController extends Controller
       public function store(Request $req){
       
         $cat=new Category();
-        
+
         $req->validate([
             'name'=>'required',
             'page_type'=>'required',

@@ -12,7 +12,7 @@
       <th style="width: 200px" scope="col">ID</th>
       <th style="width: 200px" scope="col">Title</th>
       <th style="width: 200px" scope="col">Image</th>
-      <th></th>
+      <th style="width: 200px"></th>
     </tr>
   </thead>
   <tbody>
@@ -20,7 +20,7 @@
       <th scope="row">{{$cat->id}}</th>
       <td style="width: 250px">{{$cat->name}}</td>
       <td style="width: 250px"><img src="{{$cat->image }}" width="100px" height="70px"  alt=""></td>
-      <td > <span class="d-flex">
+      <td style="width: 250px" > <span class="d-flex">
         <form action="{{route('delete',['id'=>$cat->id])}}"  method="post">
             @csrf
             @method('DELETE')

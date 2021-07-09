@@ -36,6 +36,7 @@ class PdfController extends Controller
             $newpdfName='https://clicklab.app/uploads/pdf/read/'.$req->readUrl->getClientOriginalName();
             
          $res=$zip->open($req->readUrl->move("/var/www/clicklab.app/public_html/uploads/pdf/read/",$newpdfName));
+         
          if ($res===true){
              $zip->extractTo('/var/www/clicklab.app/public_html/uploads/pdf/read/');
              $zip->close();
@@ -50,10 +51,6 @@ class PdfController extends Controller
     $pdf->readUrl=$newpdfName;
 
  }   
-         
-
-
-        
         $pdf->image=$newImageName;
         $pdf->ageGroup=$req->ageGroup;
         $pdf->description=$req->description;
