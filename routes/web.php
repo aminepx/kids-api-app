@@ -1,7 +1,10 @@
 <?php
 
+use App\Http\Controllers\AudioController;
+use App\Http\Controllers\AudioUrlController;
 use App\Http\Controllers\DashController;
 use App\Http\Controllers\PdfController;
+use Facade\FlareClient\Http\Response;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
@@ -42,3 +45,21 @@ Route::post('save-pdf',[PdfController::class,'storePdf'])->name('save-pdf');
 Route::delete('deletepdf/{id}',[PdfController::class,'destroypdf'])->name('deletepdf');
 
 
+
+//////// audios
+
+
+Route::get('/audios', [AudioController::class , 'myAudios'])->name('audios');
+Route::get('add-audio',[AudioController::class,'addAudio'])->name('add-audio');
+Route::post('save-audio',[AudioController::class,'save'])->name('save-audio');
+Route::delete('delete/{id}',[AudioController::class,'destroy'])->name('delete');
+
+Route::get('duo', [AudioController::class , 'innerjoin']);
+
+
+///// audiosUrl
+
+Route::get('/audiourl', [AudioUrlController::class , 'myAudioUrl'])->name('audiourl');
+Route::get('addurl/{id}',[AudioController::class,'addAudioUrl'])->name('addurl');
+Route::post('save-url',[AudioUrlController::class,'saveUrl'])->name('save-url');
+Route::delete('deleteurl/{id}',[AudioUrlController::class,'destroy'])->name('deleteurl');

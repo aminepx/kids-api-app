@@ -21,7 +21,7 @@
                 <a class="list-group-item list-group-item-action list-group-item-light p-3" href="http://127.0.0.1:8000/dash">Dashboard</a>
                 <a class="list-group-item list-group-item-action list-group-item-light p-3" href="{{route('cat')}}">Categories</a>
                 <a class="list-group-item list-group-item-action list-group-item-light p-3" href="{{route('allpdf')}}">Pdf Categories</a>
-                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Profile</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="{{route('audios')}}">Audio categories</a>
                 <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Status</a>
             </div>
         </div>
