@@ -34,9 +34,9 @@ class AudioUrlController extends Controller
         return view('audiourl-pages.feed',['audiourls'=>$audiourl]);
     }
 
-    public function destroy($id){
+    public function destroyurl($id){
     
         AudioUrl::find($id)->delete();
-          return redirect('/audiourl');
+          return back();
       }
 }

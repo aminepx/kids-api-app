@@ -38,9 +38,9 @@ class AudioController extends Controller
       public function innerjoin()
     {
         $audios=Audio::with('audioUrl')->get();
-        
+        $decode=json_decode($audios,true);
         // return view('audio-pages.feed',['audios'=>$audios]);
-        return response()->json(['audios'=>$audios]);
+        return response()->json(['audios'=>$decode]);
     }
 
     public function destroy($id){
@@ -50,7 +50,7 @@ class AudioController extends Controller
       }
       public function addAudioUrl($id)
       {
-        $audios=Audio::find($id);;
+        $audios=Audio::find($id);
           return view('audiourl-pages.addurl',['audios'=>$audios]);
       }
 
@@ -68,9 +68,10 @@ class AudioController extends Controller
 
       public function myAudios()
       {
-        $audios=Audio::with('audioUrl')->get();
-          
-          return view('audio-pages.feed',['audios'=>$audios]);
+        $audios=Audio::all();
+
+        $decode=json_decode($audios,true);
+          return view('audio-pages.feed',['audios'=>$decode]);
         
       }
       

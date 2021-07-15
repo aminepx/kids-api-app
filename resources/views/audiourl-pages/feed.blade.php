@@ -3,9 +3,12 @@
 @section('content')
 
 <div class="float-end mt-2 me-5">
-  <a href="{{route('addurl')}}"> <button class="btn btn-primary"> Add New Audio</button></a>
+
 </div>
 @foreach ($audiourls as $audiourl)
+@if ($audiourl->audio_id==$_GET['id'])
+    
+
 <table class="table w-75 mt-5 m-auto">
   <thead>
     <tr>
@@ -21,7 +24,7 @@
       <td style="width: 250px">{{$audiourl->title}}</td>
       <td style="width: 250px"><a href="">{{$audiourl->audio}}</a></td>
       <td style="width: 250px" > <span class="d-flex">
-        <form action="{{route('delete',['id'=>$audiourl->id])}}"  method="post">
+        <form action="{{route('deleteurl',['id'=>$audiourl->id])}}"  method="post">
             @csrf
             @method('DELETE')
             <button class="btn btn-danger me-1"><i class="fas fa-trash-alt"></i></button>
@@ -36,6 +39,8 @@
    
   </tbody>
 </table>
+@endif
+
     @endforeach
 
 

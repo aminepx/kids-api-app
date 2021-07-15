@@ -53,13 +53,12 @@ Route::get('/audios', [AudioController::class , 'myAudios'])->name('audios');
 Route::get('add-audio',[AudioController::class,'addAudio'])->name('add-audio');
 Route::post('save-audio',[AudioController::class,'save'])->name('save-audio');
 Route::delete('delete/{id}',[AudioController::class,'destroy'])->name('delete');
-
+Route::get('addurl/{id}',[AudioController::class,'addAudioUrl'])->name('addurl');
 Route::get('duo', [AudioController::class , 'innerjoin']);
 
 
 ///// audiosUrl
 
-Route::get('/audiourl', [AudioUrlController::class , 'myAudioUrl'])->name('audiourl');
-Route::get('addurl/{id}',[AudioController::class,'addAudioUrl'])->name('addurl');
+Route::get('audiourl', [AudioUrlController::class , 'myAudioUrl'])->name('audiourl');
 Route::post('save-url',[AudioUrlController::class,'saveUrl'])->name('save-url');
-Route::delete('deleteurl/{id}',[AudioUrlController::class,'destroy'])->name('deleteurl');
+Route::delete('deleteurl/{id}',[AudioUrlController::class,'destroyurl'])->name('deleteurl');
